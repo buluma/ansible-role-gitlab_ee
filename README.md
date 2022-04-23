@@ -4,7 +4,7 @@ Ansible Role for GitLab EE Installation
 
 |GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
 |------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-gitlab_ee/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-gitlab_ee/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-gitlab_ee/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-gitlab_ee)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/pulls/)|
+|[![github](https://github.com/buluma/ansible-role-gitlab_ee/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-gitlab_ee/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-gitlab_ee/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-gitlab_ee)|[![quality](https://img.shields.io/ansible/quality/58936)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![downloads](https://img.shields.io/ansible/role/d/58936)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -194,7 +194,6 @@ The following roles are used to prepare a system. You can prepare your system in
 | Requirement | GitHub | GitLab |
 |-------------|--------|--------|
 |[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-bootstrap)|
-|[community.general](https://galaxy.ansible.com/buluma/community.general)|[![Build Status GitHub](https://github.com/buluma/community.general/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/community.general/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/community.general/badges/master/pipeline.svg)](https://gitlab.com/buluma/community.general)|
 
 ## [Context](#context)
 
