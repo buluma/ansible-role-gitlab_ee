@@ -1,4 +1,5 @@
 ---
+
 collections:
   - name: operator_sdk.util
     src: https://galaxy.ansible.com
@@ -6,4 +7,3 @@ collections:
 
 roles:
   - name: buluma.bootstrap
-  - name: community.general
