@@ -21,12 +21,6 @@
         - "../vars"
       skip: true
 
-- name: Install required pip packages
-  ansible.builtin.pip:
-    name:
-      - setuptools
-      - dataclasses
-
 - name: include release specific tasks
   ansible.builtin.include_tasks: "{{ _loop_var }}"
   loop: "{{ query('first_found', _params) }}"
