@@ -21,6 +21,9 @@ galaxy_info:
     - name: Fedora
       versions:
         - all
+    - name: OpenSUSE
+      versions:
+        - all
   galaxy_tags:
     - system
 dependencies: []
