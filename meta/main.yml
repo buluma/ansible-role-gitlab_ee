@@ -1,8 +1,7 @@
 ---
 galaxy_info:
-  namespace: buluma
   role_name: gitlab_ee
-  author: Michael Buluma
+  author: buluma
   description: Ansible Role for GitLab EE Installation
   company: ShadowNet
   license: Apache-2.0
