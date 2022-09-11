@@ -48,8 +48,8 @@
   register: result
   until: result is succeeded
   notify:
-    - gitlab_ee | gitlab-ctl reconfigure
-    - gitlab_ee | systemctl restart gitlab-runsvdir.service
+    - Gitlab_ee | gitlab-ctl reconfigure
+    - Gitlab_ee | systemctl restart gitlab-runsvdir.service
 
 - name: yum versionlock add
   community.general.yum_versionlock:

@@ -103,8 +103,8 @@
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
   notify:
-    - gitlab_ee | gitlab-ctl reconfigure
-    - gitlab_ee | systemctl restart gitlab-runsvdir.service
+    - Gitlab_ee | gitlab-ctl reconfigure
+    - Gitlab_ee | systemctl restart gitlab-runsvdir.service
 
 - name: prepare files
   ansible.builtin.file:
@@ -116,8 +116,8 @@
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
   notify:
-    - gitlab_ee | gitlab-ctl reconfigure
-    - gitlab_ee | systemctl restart gitlab-runsvdir.service
+    - Gitlab_ee | gitlab-ctl reconfigure
+    - Gitlab_ee | systemctl restart gitlab-runsvdir.service
 
 - name: flush handlers
   ansible.builtin.meta: flush_handlers
