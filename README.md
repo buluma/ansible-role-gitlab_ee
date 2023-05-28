@@ -4,11 +4,12 @@ Ansible Role for GitLab EE Installation
 
 |GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
 |------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-gitlab_ee/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-gitlab_ee/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-gitlab_ee/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-gitlab_ee)|[![quality](https://img.shields.io/ansible/quality/58936)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![downloads](https://img.shields.io/ansible/role/d/58936)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/pulls/)|
+|[![github](https://github.com/buluma/ansible-role-gitlab_ee/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-gitlab_ee/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-gitlab_ee/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-gitlab_ee)|[![quality](https://img.shields.io/ansible/quality/58936)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![downloads](https://img.shields.io/ansible/role/d/58936)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
-This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
+This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-gitlab_ee/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
+
 ```yaml
 ---
 - hosts: all
@@ -18,10 +19,12 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
   roles:
     - name: buluma.bootstrap
     - name: buluma.setuptools
+    - name: buluma.timezone
     - name: buluma.gitlab_ee
 ```
 
-The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-gitlab_ee/blob/master/molecule/default/prepare.yml):
+
 ```yaml
 ---
 - hosts: all
@@ -29,7 +32,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
   become: true
   gather_facts: false
   tasks:
-    - name: redhat | subscription-manager register
+    - name: Redhat | subscription-manager register
       ansible.builtin.raw: |
         set -eu
         subscription-manager register \
@@ -39,7 +42,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: debian | apt-get install python3
+    - name: Debian | apt-get install python3
       ansible.builtin.raw: |
         set -eu
         apt-get update
@@ -47,7 +50,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: redhat | yum install python3
+    - name: Redhat | yum install python3
       ansible.builtin.raw: |
         set -eu
         yum makecache
@@ -55,7 +58,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: suse | zypper install python3
+    - name: Suse | zypper install python3
       ansible.builtin.raw: |
         set -eu
         zypper -n --gpg-auto-import-keys refresh
@@ -67,14 +70,14 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
   remote_user: root
   become: true
   tasks:
-    - name: cp -rfT /etc/skel /root
+    - name: Cp -rfT /etc/skel /root
       ansible.builtin.raw: |
         set -eu
         cp -rfT /etc/skel /root
       changed_when: false
       failed_when: false
 
-    - name: setenforce 0
+    - name: Setenforce 0
       ansible.builtin.raw: |
         set -eu
         setenforce 0
@@ -82,7 +85,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: systemctl stop firewalld.service
+    - name: Systemctl stop firewalld.service
       ansible.builtin.raw: |
         set -eu
         systemctl stop firewalld.service
@@ -90,7 +93,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: systemctl stop ufw.service
+    - name: Systemctl stop ufw.service
       ansible.builtin.raw: |
         set -eu
         systemctl stop ufw.service
@@ -98,7 +101,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: debian | apt-get install *.deb
+    - name: Debian | apt-get install *.deb
       ansible.builtin.raw: |
         set -eu
         DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2 ca-certificates curl gcc gnupg gzip hostname iproute2 passwd procps python3 python3-apt python3-jmespath python3-lxml python3-pip python3-setuptools python3-venv python3-virtualenv python3-wheel rsync sudo tar unzip util-linux xz-utils zip
@@ -106,7 +109,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: fedora | yum install *.rpm
+    - name: Fedora | yum install *.rpm
       ansible.builtin.raw: |
         set -eu
         yum install -y bzip2 ca-certificates curl gcc gnupg2 gzip hostname iproute procps-ng python3 python3-dnf-plugin-versionlock python3-jmespath python3-libselinux python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow-utils sudo tar unzip util-linux xz yum-utils zip
@@ -114,7 +117,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: redhat-9 | yum install *.rpm
+    - name: Redhat-9 | yum install *.rpm
       ansible.builtin.raw: |
         set -eu
         yum-config-manager --enable crb || echo $?
@@ -125,7 +128,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: redhat-8 | yum install *.rpm
+    - name: Redhat-8 | yum install *.rpm
       ansible.builtin.raw: |
         set -eu
         yum install -y http://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
@@ -134,7 +137,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: redhat-7 | yum install *.rpm
+    - name: Redhat-7 | yum install *.rpm
       ansible.builtin.raw: |
         set -eu
         subscription-manager repos --enable=rhel-7-server-optional-rpms || echo $?
@@ -144,7 +147,7 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       changed_when: false
       failed_when: false
 
-    - name: suse | zypper -n install *.rpm
+    - name: Suse | zypper -n install *.rpm
       ansible.builtin.raw: |
         set -eu
         zypper -n install -y bzip2 ca-certificates curl gcc gpg2 gzip hostname iproute2 procps python3 python3-jmespath python3-lxml python3-pip python3-setuptools python3-virtualenv python3-wheel rsync shadow sudo tar unzip util-linux xz zip
@@ -153,10 +156,12 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       failed_when: false
 ```
 
+Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
 
 ## [Role Variables](#role-variables)
 
-The default values for the variables are set in `defaults/main.yml`:
+The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-gitlab_ee/blob/master/defaults/main.yml):
+
 ```yaml
 ---
 # GitLab release.
@@ -186,20 +191,21 @@ gitlab_package_modify_kernel_parameters: "true"
 
 ## [Requirements](#requirements)
 
-- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-gitlab_ee/blob/main/requirements.txt).
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-gitlab_ee/blob/master/requirements.txt).
 
-## [Status of used roles](#status-of-requirements)
+## [State of used roles](#state-of-used-roles)
 
 The following roles are used to prepare a system. You can prepare your system in another way.
 
 | Requirement | GitHub | GitLab |
 |-------------|--------|--------|
-|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-bootstrap/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-bootstrap)|
-|[buluma.setuptools](https://galaxy.ansible.com/buluma/setuptools)|[![Build Status GitHub](https://github.com/buluma/ansible-role-setuptools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-setuptools/actions)|[![Build Status GitLab ](https://gitlab.com/buluma/ansible-role-setuptools/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-setuptools)|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-bootstrap)|
+|[buluma.setuptools](https://galaxy.ansible.com/buluma/setuptools)|[![Build Status GitHub](https://github.com/buluma/ansible-role-setuptools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-setuptools/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-setuptools/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-setuptools)|
+|[buluma.timezone](https://galaxy.ansible.com/buluma/timezone)|[![Build Status GitHub](https://github.com/buluma/ansible-role-timezone/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-timezone/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-timezone/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-timezone)|
 
 ## [Context](#context)
 
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.co.ke/) for further information.
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.github.io/) for further information.
 
 Here is an overview of related roles:
 
@@ -211,18 +217,17 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 
 |container|tags|
 |---------|----|
-|ubuntu|bionic, focal|
-|el|all|
-|debian|all|
-|fedora|all|
+|[Ubuntu](https://hub.docker.com/repository/docker/buluma/ubuntu/general)|bionic, focal|
+|[EL](https://hub.docker.com/repository/docker/buluma/enterpriselinux/general)|all|
+|[Debian](https://hub.docker.com/repository/docker/buluma/debian/general)|all|
+|[Fedora](https://hub.docker.com/repository/docker/buluma/fedora/general)|all|
+|[opensuse](https://hub.docker.com/repository/docker/buluma/opensuse/general)|all|
 
 The minimum version of Ansible required is 4.10, tests have been done to:
 
 - The previous version.
 - The current version.
 - The development version.
-
-
 
 If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-gitlab_ee/issues)
 
@@ -232,8 +237,14 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [License](#license)
 
-Apache-2.0
+[Apache-2.0](https://github.com/buluma/ansible-role-gitlab_ee/blob/master/LICENSE).
 
 ## [Author Information](#author-information)
 
 [Michael Buluma](https://buluma.github.io/)
+
+Please consider [sponsoring me](https://github.com/sponsors/buluma).
+
+### [Special Thanks](#special-thanks)
+
+Template inspired by [Robert de Bock](https://github.com/robertdebock)

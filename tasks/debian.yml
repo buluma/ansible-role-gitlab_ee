@@ -1,6 +1,6 @@
 ---
 
-- name: Install required pip packages
+- name: debian | Install required pip packages
   vars:
     ansible_python_interpreter: "python3"
   ansible.builtin.pip:
@@ -8,7 +8,7 @@
       - setuptools
       - dataclasses
 
-- name: Apt-key add
+- name: debian | Apt-key add
   ansible.builtin.apt_key:
     keyring: "{{ item.keyring }}"
     url: "{{ item.url }}"
@@ -18,7 +18,7 @@
   register: result
   until: result is succeeded
 
-- name: Apt-add-repository
+- name: debian | Apt-add-repository
   ansible.builtin.apt_repository:
     filename: "{{ item.filename }}"
     repo: "{{ item.repo }}"
@@ -28,7 +28,7 @@
   register: result
   until: result is succeeded
 
-- name: Apt-mark unhold
+- name: debian | Apt-mark unhold
   ansible.builtin.dpkg_selections:
     name: "{{ item.name | regex_replace('^(.*)=[0-9]*:*[0-9]+\\..*$', '\\1') }}"
     selection: "install"
@@ -37,7 +37,7 @@
   changed_when: false
   failed_when: false
 
-- name: Apt-get install
+- name: debian | Apt-get install
   ansible.builtin.apt:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
@@ -48,7 +48,7 @@
     - Gitlab_ee | gitlab-ctl reconfigure
     - Gitlab_ee | systemctl restart gitlab-runsvdir.service
 
-- name: Apt-mark hold
+- name: debian | Apt-mark hold
   ansible.builtin.dpkg_selections:
     name: "{{ item.name | regex_replace('^(.*)=[0-9]*:*[0-9]+\\..*$', '\\1') }}"
     selection: "hold"
