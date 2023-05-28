@@ -8,7 +8,7 @@
       - setuptools
       - dataclasses
 
-- name: Rpm --import
+- name: redhat | Rpm --import
   ansible.builtin.rpm_key:
     key: "{{ item.key }}"
     fingerprint: "{{ item.fingerprint }}"
