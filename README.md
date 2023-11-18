@@ -1,10 +1,10 @@
-# [gitlab_ee](#gitlab_ee)
+# [Ansible role gitlab_ee](#gitlab_ee)
 
 Ansible Role for GitLab EE Installation
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-gitlab_ee/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-gitlab_ee/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-gitlab_ee/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-gitlab_ee)|[![quality](https://img.shields.io/ansible/quality/58936)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![downloads](https://img.shields.io/ansible/role/d/58936)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/pulls/)|
+|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-gitlab_ee/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-gitlab_ee/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-gitlab_ee/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-gitlab_ee)|[![downloads](https://img.shields.io/ansible/role/d/4718)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -217,13 +217,13 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 
 |container|tags|
 |---------|----|
-|[Ubuntu](https://hub.docker.com/repository/docker/buluma/ubuntu/general)|bionic, focal|
+|[Ubuntu](https://hub.docker.com/repository/docker/buluma/ubuntu/general)|all|
 |[EL](https://hub.docker.com/repository/docker/buluma/enterpriselinux/general)|all|
 |[Debian](https://hub.docker.com/repository/docker/buluma/debian/general)|all|
 |[Fedora](https://hub.docker.com/repository/docker/buluma/fedora/general)|all|
 |[opensuse](https://hub.docker.com/repository/docker/buluma/opensuse/general)|all|
 
-The minimum version of Ansible required is 4.10, tests have been done to:
+The minimum version of Ansible required is 2.12, tests have been done to:
 
 - The previous version.
 - The current version.
