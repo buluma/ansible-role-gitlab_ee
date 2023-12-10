@@ -5,7 +5,7 @@
   become: true
   gather_facts: yes
   roles:
-    - name: buluma.bootstrap
-    - name: buluma.setuptools
-    - name: buluma.timezone
-    - name: ansible-role-gitlab_ee
+    - role: buluma.bootstrap
+    - role: buluma.setuptools
+    - role: buluma.timezone
+    - role: ansible-role-gitlab_ee
