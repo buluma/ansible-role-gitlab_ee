@@ -1,10 +1,10 @@
-# [Ansible role gitlab_ee](#gitlab_ee)
+# Ansible role [gitlab_ee](https://galaxy.ansible.com/ui/standalone/roles/buluma/gitlab_ee/documentation)
 
 Ansible Role for GitLab EE Installation
 
-|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-gitlab_ee/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-gitlab_ee/actions/workflows/molecule.yml)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-gitlab_ee/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-gitlab_ee)|[![downloads](https://img.shields.io/ansible/role/d/4718)](https://galaxy.ansible.com/buluma/gitlab_ee)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-gitlab_ee/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-gitlab_ee/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-gitlab_ee.svg)](https://github.com/buluma/ansible-role-gitlab_ee/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/gitlab_ee)](https://galaxy.ansible.com/ui/standalone/roles/buluma/gitlab_ee/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -12,22 +12,24 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-- hosts: all
+- name: Converge
+  hosts: all
   remote_user: root
   become: true
   gather_facts: yes
   roles:
-    - name: buluma.bootstrap
-    - name: buluma.setuptools
-    - name: buluma.timezone
-    - name: buluma.gitlab_ee
+    - role: buluma.bootstrap
+    - role: buluma.setuptools
+    - role: buluma.timezone
+    - role: buluma.gitlab_ee
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-gitlab_ee/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
-- hosts: all
+- name: Prepare
+  hosts: all
   remote_user: root
   become: true
   gather_facts: false
@@ -66,10 +68,6 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
       changed_when: false
       failed_when: false
 
-- hosts: all
-  remote_user: root
-  become: true
-  tasks:
     - name: Cp -rfT /etc/skel /root
       ansible.builtin.raw: |
         set -eu
@@ -197,11 +195,11 @@ gitlab_package_modify_kernel_parameters: "true"
 
 The following roles are used to prepare a system. You can prepare your system in another way.
 
-| Requirement | GitHub | GitLab |
+| Requirement | GitHub | Version |
 |-------------|--------|--------|
-|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-bootstrap)|
-|[buluma.setuptools](https://galaxy.ansible.com/buluma/setuptools)|[![Build Status GitHub](https://github.com/buluma/ansible-role-setuptools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-setuptools/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-setuptools/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-setuptools)|
-|[buluma.timezone](https://galaxy.ansible.com/buluma/timezone)|[![Build Status GitHub](https://github.com/buluma/ansible-role-timezone/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-timezone/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-timezone/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-timezone)|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Ansible Molecule](https://github.com/buluma/ansible-role-bootstrap/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-bootstrap.svg)](https://github.com/shadowwalker/ansible-role-bootstrap)|
+|[buluma.setuptools](https://galaxy.ansible.com/buluma/setuptools)|[![Ansible Molecule](https://github.com/buluma/ansible-role-setuptools/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-setuptools/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-setuptools.svg)](https://github.com/shadowwalker/ansible-role-setuptools)|
+|[buluma.timezone](https://galaxy.ansible.com/buluma/timezone)|[![Ansible Molecule](https://github.com/buluma/ansible-role-timezone/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-timezone/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-timezone.svg)](https://github.com/shadowwalker/ansible-role-timezone)|
 
 ## [Context](#context)
 
@@ -237,14 +235,9 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [License](#license)
 
-[Apache-2.0](https://github.com/buluma/ansible-role-gitlab_ee/blob/master/LICENSE).
+[Apache-2.0](https://github.com/buluma/ansible-role-gitlab_ee/blob/master/LICENSE)
 
 ## [Author Information](#author-information)
 
-[Michael Buluma](https://buluma.github.io/)
+[Shadow Walker](https://buluma.github.io/)
 
-Please consider [sponsoring me](https://github.com/sponsors/buluma).
-
-### [Special Thanks](#special-thanks)
-
-Template inspired by [Robert de Bock](https://github.com/robertdebock)
